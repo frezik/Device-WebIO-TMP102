@@ -63,8 +63,9 @@ sub temp_celsius
     my $channel  = $self->channel;
     my $addr     = $self->address;
 
-    return $webio->i2c_read( $provider,
+    my ($temp) = $webio->i2c_read( $provider,
         $channel, $addr, $self->TEMP_REGISTER, 1 );
+    return $temp;
 }
 
 sub temp_kelvins
